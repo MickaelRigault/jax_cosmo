@@ -8,14 +8,15 @@ except DistributionNotFound:
     # package is not installed
     pass
 
-import jax_cosmo.angular_cl as cl
-import jax_cosmo.background as background
-import jax_cosmo.bias as bias
-import jax_cosmo.likelihood as likelihood
-import jax_cosmo.power as power
-import jax_cosmo.probes as probes
-import jax_cosmo.redshift as redshift
-import jax_cosmo.transfer as transfer
-from jax_cosmo.core import *
-from jax_cosmo.parameters import *
-import jax_cosmo.sparse as sparse
+
+from . import angular_cl as cl
+from . import background as background
+from . import bias as bias
+from . import likelihood as likelihood
+from . import power as power
+from . import probes as probes
+from . import redshift as redshift
+from . import transfer as transfer
+from .core import *
+from .parameters import *
+from . import sparse as sparse

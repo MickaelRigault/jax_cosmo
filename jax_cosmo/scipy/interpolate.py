@@ -1,6 +1,7 @@
 # This module contains some missing ops from jax
 import functools
 
+import numpy
 import jax.numpy as np
 from jax import vmap
 from jax.numpy import array
@@ -32,9 +33,9 @@ def interp(x, xp, fp):
 
     xi = xp[ind]
     # Figure out if we are on the right or the left of nearest
-    s = np.sign(np.clip(x, xp[1], xp[-2]) - xi).astype(np.int64)
-    a = (fp[ind + np.copysign(1, s).astype(np.int64)] - fp[ind]) / (
-        xp[ind + np.copysign(1, s).astype(np.int64)] - xp[ind]
+    s = np.sign(np.clip(x, xp[1], xp[-2]) - xi).astype(np.int32)
+    a = (fp[ind + np.copysign(1, s).astype(np.int32)] - fp[ind]) / (
+        xp[ind + np.copysign(1, s).astype(np.int32)] - xp[ind]
     )
     b = fp[ind] - a * xp[ind]
     return a * x + b
